@@ -100,7 +100,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             {suggestions.length > 0 ? (
               suggestions.map(person => (
                 <div
-                  key={person.slug}
+                  // Using person.id if available, or slug as fallback
+                  // Ensure this key is unique and stable across renders
+                  key={person.id || person.slug}
                   className="dropdown-item"
                   onClick={() => handleSuggestionClick(person)}
                   data-cy="suggestion-item"
